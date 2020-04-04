@@ -7,6 +7,7 @@ class Puzzle {
         this.convertStringToState(gameString);
         
         this.EMPTY_CELL = 0;
+        this.intermediateSteps = []
     }
 
     // MAIN ===========================================================================
@@ -26,13 +27,19 @@ class Puzzle {
             }
 
             this.matrix[row][col] = num;
+            //this.intermediateSteps.push(this.convertMatrixToString());
             if (this.backtrack()) {
                 return true;
             }
+            //this.intermediateSteps.push(this.convertMatrixToString());
             this.matrix[row][col] = this.EMPTY_CELL;
         }
 
         return false;
+    }
+
+    getIntermediateSteps() {
+        return this.intermediateSteps;
     }
 
     // BOARD CHECKING ===========================================================================

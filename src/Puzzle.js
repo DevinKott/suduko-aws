@@ -148,6 +148,17 @@ class Puzzle {
         }
         process.stdout.write(`\n`);
     }
+
+    convertMatrixToString() {
+        let temp = '';
+        for (let row = 0; row < this.puzzleSize; row++) {
+            for (let col = 0; col < this.puzzleSize; col++) {
+                temp += `${this.matrix[row][col]}`;
+            }
+        }
+
+        return temp;
+    }
 }
 
 module.exports = {

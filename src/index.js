@@ -4,3 +4,5 @@ let puzzle = new Puzzle(9, `6000000010900400600006170000030002000620501800070006
 puzzle.print();
 puzzle.backtrack();
 puzzle.print();
+
+console.debug(`Final String: ${puzzle.convertMatrixToString()}`);

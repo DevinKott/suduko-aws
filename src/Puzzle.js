@@ -2,9 +2,7 @@ const utils = require('./utils');
 
 class Puzzle {
     constructor(puzzleSize, gameString) {
-        this.error = null;
         this.puzzleSize = puzzleSize;
-        this.gameState = null;
         this.matrix = utils.createMatrix(this.puzzleSize);
         this.convertStringToState(gameString);
         

@@ -37,6 +37,13 @@ class Puzzle {
 
     // BOARD CHECKING ===========================================================================
 
+    /**
+     * See if we are making a valid placement at matrix[row][col] with number.
+     * 
+     * @param {integer} row The row to check
+     * @param {integer} col The column to check
+     * @param {integer} number The number to check
+     */
     isValid(row, col, number) {
         return !this.isNumberInRow(row, number) &&
         !this.isNumberInCol(col, number) &&
@@ -60,6 +67,12 @@ class Puzzle {
         return {row: null, col: null};
     }
 
+    /**
+     * See if `number` exists in the row already.
+     * 
+     * @param {integer} row The row to check
+     * @param {integer} number The number to check
+     */
     isNumberInRow(row, number) {
         for (let col = 0; col < this.puzzleSize; col++) {
             if (this.matrix[row][col] === number) {
@@ -70,6 +83,12 @@ class Puzzle {
         return false;
     }
 
+    /**
+     * See if `number` exists in the column already.
+     * 
+     * @param {integer} col The column to check
+     * @param {integer} number The number to check
+     */
     isNumberInCol(col, number) {
         for (let row = 0; row < this.puzzleSize; row++) {
             if (this.matrix[row][col] === number) {
@@ -80,6 +99,13 @@ class Puzzle {
         return false;
     }
 
+    /**
+     * See if `number` exists in the quadrant already.
+     * 
+     * @param {integer} row The row to check
+     * @param {integer} col The column to check
+     * @param {integer} number The number to check
+     */
     isNumberInQuadrant(row, col, number) {
         let tempRow = row - row % 3;
         let tempCol = col - col % 3;

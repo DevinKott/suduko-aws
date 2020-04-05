@@ -54,7 +54,45 @@ class Puzzle {
         for (let row = 0; row < this.puzzleSize; row++) {
             for (let col = 0; col < this.puzzleSize; col++) {
                 let number = this.matrix[row][col];
-                if (this.isValid(number) === false) {
+                if (number === 0) {
+                    continue;
+                }
+
+                let inRow = 0;
+                for (let c = 0; c < this.puzzleSize; c++) {
+                    if (this.matrix[row][c] === number) {
+                        inRow += 1;
+                    }
+                }
+
+                if (inRow > 1) {
+                    return false;
+                }
+
+                let inCol = 0;
+                for (let r = 0; r < this.puzzleSize; r++) {
+                    if (this.matrix[r][col] === number) {
+                        inCol += 1;
+                    }
+                }
+
+                if (inCol > 1) {
+                    return false;
+                }
+
+                let inQuad = 0;
+                let tempRow = row - (row % 3);
+                let tempCol = col - (col % 3);
+
+                for (let r = 0; r < 3; r++) {
+                    for (let c = 0; c < 3; c++) {
+                        if (this.matrix[tempRow + r][tempCol + c] === number) {
+                            inQuad += 1;
+                        }
+                    }
+                }
+
+                if (inQuad > 1) {
                     return false;
                 }
             }

@@ -27,11 +27,11 @@ class Puzzle {
             }
 
             this.matrix[row][col] = num;
-            //this.intermediateSteps.push(this.convertMatrixToString());
+            this.intermediateSteps.push(this.convertMatrixToString());
             if (this.backtrack()) {
                 return true;
             }
-            //this.intermediateSteps.push(this.convertMatrixToString());
+            this.intermediateSteps.push(this.convertMatrixToString());
             this.matrix[row][col] = this.EMPTY_CELL;
         }
 
@@ -131,15 +131,10 @@ class Puzzle {
     // OTHER ===========================================================================
 
     convertStringToState(gameString) {
-        let state = [];
-        for (let i = 0; i < gameString.length; i++) {
-            state.push(parseInt(gameString.charAt(i)));
-        }
-
         let index = 0;
         for (let row = 0; row < this.puzzleSize; row++) {
             for (let col = 0; col < this.puzzleSize; col++) {
-                this.matrix[row][col] = state[index++];
+                this.matrix[row][col] = parseInt(gameString.charAt(index++));
             }
         }
     }
